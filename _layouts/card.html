@@ -6,6 +6,7 @@ layout: default
 {% assign section = page.path | split:'/' | first %}
 
 <style>
+@import '/assets/card.css';
 {{ page.css }}
 </style>
 
@@ -38,6 +39,8 @@ layout: default
 	</p>
 </div>
 
+{% unless p == 0 %}
 <div id="body">
 	{% include {{ page.example }} %}
 </div>
+{% endunless %}

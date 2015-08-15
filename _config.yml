@@ -22,6 +22,11 @@ defaults:
       path: tables
     values:
       layout: tables
+  -
+    scope:
+      path: layout
+    values:
+      layout: layout
 #  -
 #    scope:
 #      path: notes
