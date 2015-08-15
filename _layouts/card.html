@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+{% assign p = page.path | split:'/' | last | remove:'.md' | times:1 %}
+{% assign section = page.path | split:'/' | first %}
+
+<style>
+{{ page.css }}
+</style>
+
+<div id="card" class="{{ section }}">
+	<p class="dots">
+		{% for i in (1..page.pagecount) %}
+		<a href="{{i}}.html" title="{{i}}" {% if i == p %}class="selected"{% endif %}>&middot;</a>
+		{% endfor %}
+	</p>
+	{{ content }}
+	<p class="nav">
+		<a href="..">Learn CSS</a>
+		&#9656;
+		<a href=".">{{ page.title }}</a>
+	</p>
+	<p id="nextprev">
+		{% if p == 0 %}
+			<a href="1.html" title="Start">Start &#9656;</a>
+		{% elsif p == 1 %}
+			<a href="." title="Previous">&#9664;</a>
+		{% else %}
+			<a href="{{ p | minus:1 }}.html" title="Previous">&#9664;</a>
+		{% endif %}
+		{% if p == 0 %}
+		{% elsif p == page.pagecount %}
+			<a href="." title="Start Over">&#9672;</a>
+		{% else %}
+			<a href="{{ p | plus:1 }}.html" title="Next">&#9654;</a>
+		{% endif %}
+	</p>
+</div>
+
+<div id="body">
+	{% include {{ page.example }} %}
+</div>

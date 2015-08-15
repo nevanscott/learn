@@ -14,22 +14,27 @@ defaults:
       layout: default
   -
     scope:
-      path: "basics"
+      path: basics
     values:
       layout: basics
   -
     scope:
-      path: notes
+      path: tables
     values:
-      layout: notes
-      permalink: /:title/
-  -
-    scope:
-      path: ""
-      type: notes
-    values:
-      layout: notes
-      section: notes
+      layout: tables
+#  -
+#    scope:
+#      path: notes
+#    values:
+#      layout: notes
+#      permalink: /:title/
+#  -
+#    scope:
+#      path: ""
+#      type: notes
+#    values:
+#      layout: notes
+#      section: notes
 redcarpet:
   extensions:
     - 'autolink'

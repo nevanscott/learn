@@ -15,8 +15,14 @@ body {
 	width: 280px;
 	padding: 0 0 10px 0;
 	overflow: hidden;
-	background: transparent url('box.gif') bottom center no-repeat;
+	background: transparent bottom center no-repeat;
 	padding-bottom: 80px;
+	}
+#card.basics {
+	background-image: url('box.gif');
+	}
+#card.tables {
+	background-image: url('table.gif');
 	}
 #card a {
 	color: #000000;
