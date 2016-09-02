@@ -12,35 +12,37 @@ layout: default
 
 <div id="card" class="{{ section }}">
 	<p class="dots">
-		{% for i in (1..page.pagecount) %}
-		<a href="{{i}}.html" title="{{i}}" {% if i == p %}class="selected"{% endif %}>&middot;</a>
+		{% for i in (1..layout.pagecount) %}
+		<a href="/{{ section }}/{{i}}/" title="{{i}}" {% if i == p %}class="selected"{% endif %}>&middot;</a>
 		{% endfor %}
 	</p>
 	{{ content }}
 	<p class="nav">
-		<a href="..">Learn CSS</a>
+		<a href="/">Learn CSS</a>
 		&#9656;
-		<a href=".">{{ page.title }}</a>
+		<a href="/{{ section }}/">{{ layout.title }}</a>
 	</p>
 	<p id="nextprev">
 		{% if p == 0 %}
-			<a href="1.html" title="Start">Start &#9656;</a>
+			<a href="/{{ section }}/1/" title="Start">Start &#9656;</a>
 		{% elsif p == 1 %}
-			<a href="." title="Previous">&#9664;</a>
+			<a href="/{{ section }}/" title="Previous">&#9664;</a>
 		{% else %}
-			<a href="{{ p | minus:1 }}.html" title="Previous">&#9664;</a>
+			<a href="/{{ section }}/{{ p | minus:1 }}/" title="Previous">&#9664;</a>
 		{% endif %}
 		{% if p == 0 %}
-		{% elsif p == page.pagecount %}
-			<a href="." title="Start Over">&#9672;</a>
+		{% elsif p == layout.pagecount %}
+			<a href="/{{ section }}/" title="Start Over">&#9672;</a>
 		{% else %}
-			<a href="{{ p | plus:1 }}.html" title="Next">&#9654;</a>
+			<a href="/{{ section }}/{{ p | plus:1 }}/" title="Next">&#9654;</a>
 		{% endif %}
 	</p>
 </div>
 
+{% if layout.example %}
 {% unless p == 0 %}
 <div id="body">
-	{% include {{ page.example }} %}
+	{% include examples/{{ layout.example }}.html %}
 </div>
 {% endunless %}
+{% endif %}

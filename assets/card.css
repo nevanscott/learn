@@ -6,7 +6,10 @@ body {
 	}
 
 #card {
-	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", 
+    "Fira Sans", "Droid Sans", "Helvetica Neue", 
+    sans-serif;
 	font-size: 12px;
 	line-height: 1.5em;
 	position: absolute;
