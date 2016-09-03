@@ -1,6 +1,8 @@
 ---
 ---
 
+@import 'syntax';
+
 $blue: #0061DF;
 $sidebar: 25rem;
 
@@ -114,4 +116,7 @@ $sidebar: 25rem;
   overflow: scroll;
   width: $sidebar;
   padding: .5rem 1rem;
+  figure {
+    margin: 0;
+  }
 }
