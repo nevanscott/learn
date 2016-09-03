@@ -1,0 +1,99 @@
+---
+layout: default
+---
+
+{% assign p = page.path | split:'/' | last | remove:'.md' | times:1 %}
+{% assign section = page.path | split:'/' | first %}
+
+<style>
+@import '/assets/scratch.css';
+{% capture page_scss %}
+#browser {
+{{ page.css | replace:'body','#body' }}
+}
+{% endcapture %}
+{{ page_scss | scssify }}
+</style>
+
+<div id="bar" class="{{ section }}">
+	<p class="nav">
+		<a href="/">Learn CSS</a>
+		&#9656;
+		<a href="/{{ section }}/">{{ layout.title }}</a>
+	</p>
+	<p id="nextprev">
+		{% if p == 0 %}
+			<a id="next" href="/{{ section }}/1/" title="Start">Start &#9656;</a>
+		{% elsif p == 1 %}
+			<a id="prev" href="/{{ section }}/" title="Previous">&#9664;</a>
+		{% else %}
+			<a id="prev" href="/{{ section }}/{{ p | minus:1 }}/" title="Previous">&#9664;</a>
+		{% endif %}
+		{% if p == 0 %}
+		{% elsif p == layout.pagecount %}
+			<a href="/{{ section }}/" title="Start Over">&#9672;</a>
+		{% else %}
+			<a id="next" href="/{{ section }}/{{ p | plus:1 }}/" title="Next">&#9654;</a>
+		{% endif %}
+	</p>
+	<p class="dots">
+		<a href="/{{ section }}/" title="Start" {% if p == 0 %}class="selected"{% endif %}>&#9672;</a>
+		{% for i in (1..layout.pagecount) %}
+		<a href="/{{ section }}/{{i}}/" title="{{i}}" {% if i == p %}class="selected"{% endif %}>{{i}}</a>
+		{% endfor %}
+	</p>
+</div>
+
+<div id="prose">
+{{ content }}
+</div>
+
+<div id="code">
+<div class="html">
+{% highlight html %}
+{{ page.html }}
+{% endhighlight %}
+</div>
+<div class="css">
+{% highlight css %}
+{{ page.css }}
+{% endhighlight %}
+</div>
+</div>
+
+{% if layout.example %}
+{% unless p == 0 %}
+<div id="browser" class="c">
+<div id="body">
+	{% include examples/{{ layout.example }}.html %}
+</div>
+</div>
+{% endunless %}
+{% endif %}
+
+<script>
+var next = document.getElementById('next') && document.getElementById('next').href;
+var prev = document.getElementById('prev') && document.getElementById('prev').href;
+document.onkeydown = function(e){
+  e = e || window.event;
+  console.log(e);
+  if (e.keyCode == '38') {
+    // up arrow
+  }
+  else if (e.keyCode == '40') {
+    // down arrow
+  }
+  else if (e.keyCode == '37') {
+    // left arrow
+    if (prev) {
+      window.location = prev;
+    }
+  }
+  else if (e.keyCode == '39') {
+    // right arrow
+    if (next) {
+      window.location = next;
+    }
+  }
+};
+</script>
