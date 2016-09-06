@@ -61,15 +61,15 @@ layout: default
 </div>
 </div>
 
-{% if layout.example %}
-{% unless p == 0 %}
 <div id="browser">
 <div id="body">
+{% if layout.example %}
+{% unless p == 0 %}
 	{% include examples/{{ layout.example }}.html %}
-</div>
-</div>
 {% endunless %}
 {% endif %}
+</div>
+</div>
 
 <script>
 var next = document.getElementById('next') && document.getElementById('next').href;
