@@ -31,13 +31,13 @@ layout: default
 		{% endif %}
 		{% if p == 0 %}
 		{% elsif p == layout.pagecount %}
-			<a href="/{{ section }}/" title="Start Over">&#9672;</a>
+			<a href="/{{ section }}/" title="Start Over">&#9830;</a>
 		{% else %}
 			<a id="next" href="/{{ section }}/{{ p | plus:1 }}/" title="Next">&#9654;</a>
 		{% endif %}
 	</p>
 	<p class="dots">
-		<a href="/{{ section }}/" title="Start" {% if p == 0 %}class="selected"{% endif %}>&#9672;</a>
+		<a href="/{{ section }}/" title="Start" {% if p == 0 %}class="selected"{% endif %}>&#9830;</a>
 		{% for i in (1..layout.pagecount) %}
 		<a href="/{{ section }}/{{i}}/" title="{{i}}" {% if i == p %}class="selected"{% endif %}>{{i}}</a>
 		{% endfor %}
